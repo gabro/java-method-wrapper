@@ -32,6 +32,29 @@ public class A {
 	    });
 	}
 	
+	public void anotherMethodToBeCalled() {
+		// Wrap the call passing three Callable objects, respectively
+		// the method to be wrapped, the preamble and the prologue.
+		Wrapper.wrap(new Callable<Void>() {
+	        public Void call() {
+	            methodToExecuteWrapped();
+	            return null;
+	        }
+	    },
+	    new Callable<Void>() {
+	    	public Void call() {
+	    		System.out.println("Before!");
+				return null;
+	    	}
+	    },
+	    new Callable<Void>() {
+	    	public Void call() {
+	    		System.out.println("After!");
+				return null;
+	    	}
+	    });
+	}
+	
 	/**
 	 * This is the method that will be wrapped
 	 * The standard implementation will throw a RuntimeException,
