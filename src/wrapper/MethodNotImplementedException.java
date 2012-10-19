@@ -10,8 +10,6 @@ public class MethodNotImplementedException extends RuntimeException {
 		this(getMethodName(0) + " is not implemented!");
 	}
 
-
-
 	@SuppressWarnings("unused")
 	private static final int CLIENT_CODE_STACK_INDEX;
 	static {
@@ -35,6 +33,6 @@ public class MethodNotImplementedException extends RuntimeException {
 	 */
 	private static String getMethodName(final int depth) {
 		final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
-		return ste[ste.length - 2 - depth].getMethodName();
+		return ste[ste.length - CLIENT_CODE_STACK_INDEX - depth].getMethodName();
 	}
 }
